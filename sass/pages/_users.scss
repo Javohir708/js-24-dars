@@ -1,0 +1,49 @@
+.hero {
+    margin-top: 100px;
+    margin-bottom: 40px;
+    .hero__wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        .hero__card {
+            width: 300px;
+            height: auto;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 25px;
+            word-break: break-all;
+            .hero__image {
+                text-align: center;
+            }
+            h2 {
+                margin-top: 8px;
+                font-size: 20px;
+                font-weight: 500;
+            }
+            p {
+                font-weight: 500;
+            }
+            strong {
+                font-weight: 500;
+            }
+            .hero__btn {
+                display: block;
+                margin: 0 auto;
+                padding: 4px 40px;
+                margin-top: 8px;
+                border: none;
+                background-color: #000;
+                color: #fff;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: .3s;
+                margin-bottom: 8px;
+                &:active {
+                    transform: scale(.9);
+                }
+            }
+        }
+    }
+}
