@@ -14,6 +14,7 @@
             text-align: center;
             line-height: 25px;
             word-break: break-all;
+            cursor: pointer;
             .hero__image {
                 text-align: center;
             }
@@ -21,12 +22,15 @@
                 margin-top: 8px;
                 font-size: 20px;
                 font-weight: 500;
+                cursor: default;
             }
             p {
                 font-weight: 500;
+                cursor: default;
             }
             strong {
                 font-weight: 500;
+                cursor: default;
             }
             .hero__btn {
                 display: block;
