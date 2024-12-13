@@ -1,0 +1,40 @@
+.product__wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    .product__card {
+        width: 300px;
+        height: auto;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 30px;
+        .product__image {
+            text-align: center;
+        }
+        h2 {
+            margin-top: 8px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: default;
+        }
+        p {
+            font-weight: 500;
+            cursor: default;
+        }
+        .product__btn {
+            display: block;
+            margin: 0 auto;
+            padding: 4px 40px;
+            margin-top: 8px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .3s;
+            margin-bottom: 8px;
+        }
+    }
+}

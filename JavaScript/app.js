@@ -14,7 +14,9 @@ window.addEventListener("load", () => {
     fetchData("/users")    
 })
 
-function createCard (data) {    
+function createCard (data) {  
+    console.log(data);
+      
 
     data.users.forEach(user => {
         const divEl = document.createElement("div")
