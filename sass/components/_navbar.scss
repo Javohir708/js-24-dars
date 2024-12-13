@@ -1,0 +1,23 @@
+.header {
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+        background-color: #fff;
+        padding: 10px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        &__logo {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        &__collection {
+            display: flex;
+            gap: 30px;
+            font-weight: 500;
+        }
+    }
+}
