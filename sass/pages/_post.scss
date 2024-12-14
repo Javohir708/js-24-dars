@@ -13,13 +13,18 @@
             font-size: 20px;
             text-align: center;
             font-weight: 600;
+            cursor: default;
         }
         p {
             margin-bottom: 10px;
             font-style: italic;
+            cursor: default;
         }
         strong {
+            display: inline-block;
             font-weight: 600;
+            margin-right: 10px;
+            cursor: pointer;
         }
     }
 }

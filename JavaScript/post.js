@@ -25,9 +25,9 @@ function createCard (data) {
         divEl.innerHTML = `
             <h2>${post.title}</h2>
             <p>${post.body}</p>
-            <strong>likes: ${post.reactions.likes},</strong>
-            <strong>dislikes: ${post.reactions.dislikes},</strong>
-            <strong>views: ${post.views}</strong>
+            <strong><i class="fa-solid fa-thumbs-up" style="color: #000000;"></i> ${post.reactions.likes},</strong>
+            <strong><i class="fa-solid fa-thumbs-down" style="color: #000000;"></i> ${post.reactions.dislikes},</strong>
+            <strong><i class="fa-solid fa-eye" style="color: #000000;"></i> ${post.views}</strong>
         `
         posttWrapperEl.appendChild(divEl)
     });
