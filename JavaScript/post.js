@@ -1,4 +1,5 @@
 const posttWrapperEl = document.querySelector(".post_wrapper")
+const loadingPostEl = document.querySelector(".loading__post")
 
 const BASE_URL = "https://dummyjson.com"
 
@@ -8,6 +9,9 @@ async function fetchData(endpoint) {
     .json()
     .then((res) => createCard(res))
     .catch((err) => console.log(err))
+    .finally(() => {
+        loadingPostEl.style.display = 'none'
+    })
 
 }
 
