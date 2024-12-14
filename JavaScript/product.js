@@ -1,6 +1,7 @@
 const productWrapperEl = document.querySelector(".product__wrapper")
 const loadingEl = document.querySelector(".loading")
 const collectionEl = document.querySelector(".collection")
+const btnseeMoreEl = document.querySelector(".btn_seemore")
 
 
 const BASE_URL = "https://dummyjson.com"
@@ -18,7 +19,7 @@ async function fetchData(endpoint) {
 
 window.addEventListener("load", () => {
     createLoading(8)
-    fetchData("/products")    
+    fetchData("/products?limit=8")    
     fetchCategory("/products/category-list")
 })
 
@@ -72,3 +73,9 @@ function createCategory (data) {
         collectionEl.appendChild(listEl)
     })
 }
+
+let offset = 0
+btnseeMoreEl.addEventListener("click", () => {
+    offset++
+    fetchData(`/products?limit=8&skip=${(offset) * 8}`)
+})

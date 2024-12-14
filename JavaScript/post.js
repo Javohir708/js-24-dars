@@ -1,5 +1,6 @@
 const posttWrapperEl = document.querySelector(".post_wrapper")
 const loadingPostEl = document.querySelector(".loading__post")
+const btnseeMoreEl = document.querySelector(".btn_seemore")
 
 const BASE_URL = "https://dummyjson.com"
 
