@@ -1,0 +1,24 @@
+.collection {
+    padding: 10px 0px;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        height: 0;
+    }
+    .item {
+        display: flex;
+        background-color: #fff;
+        padding: 6px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+        text-transform: capitalize;
+        transition: .3s;
+        &:active {
+            transform: scale(.9);
+        }
+    }
+}

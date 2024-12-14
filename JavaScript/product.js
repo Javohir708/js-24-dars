@@ -1,5 +1,7 @@
 const productWrapperEl = document.querySelector(".product__wrapper")
 const loadingEl = document.querySelector(".loading")
+const collectionEl = document.querySelector(".collection")
+
 
 const BASE_URL = "https://dummyjson.com"
 
@@ -17,6 +19,7 @@ async function fetchData(endpoint) {
 window.addEventListener("load", () => {
     createLoading(8)
     fetchData("/products")    
+    fetchCategory("/products/category-list")
 })
 
 function createLoading (n) {
@@ -50,4 +53,22 @@ function createCard (data) {
         `
         productWrapperEl.appendChild(divEl)
     });
+}
+
+async function fetchCategory(endpoint) {
+    const response = await fetch(`${BASE_URL}${endpoint}`)
+    response 
+        .json()
+        .then(res => {
+            createCategory(res);
+     })
+}
+
+function createCategory (data) {
+    data.forEach((category) => {
+        const listEl = document.createElement("li")
+        listEl.className = "item"
+        listEl.textContent = category
+        collectionEl.appendChild(listEl)
+    })
 }
