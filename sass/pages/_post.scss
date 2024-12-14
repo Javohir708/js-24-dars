@@ -1,0 +1,25 @@
+.post_wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    place-items: center;
+    .post__card {
+        width: 100%;
+        height: auto;
+        background-color: #fff;
+        padding: 10px;   
+        border-radius: 15px;
+        h2 {
+            font-size: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        strong {
+            font-weight: 600;
+        }
+    }
+}
