@@ -10,15 +10,13 @@
         justify-content: space-between;
         height: 70px;
         padding: 10px;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        &__logo {
+        .navbar__logo {
             img {
                 width: 40px;
                 height: 40px;
             }
         }
-        &__collection {
+        .navbar__collection {
             display: flex;
             gap: 30px;
             font-weight: 500;

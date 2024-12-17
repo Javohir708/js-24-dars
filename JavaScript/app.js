@@ -15,6 +15,7 @@ async function fetchData(endpoint) {
 
 }
 
+
 window.addEventListener("load", () => {
     createLoading(8)
     fetchData("/users?limit=8")    

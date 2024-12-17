@@ -6,11 +6,20 @@ const btnseeMoreEl = document.querySelector(".btn_seemore")
 
 const BASE_URL = "https://dummyjson.com"
 
+const perPageCount = 8
+let productEndpoint = "/products"
+
 async function fetchData(endpoint) {
     const response = await fetch(`${BASE_URL}${endpoint}`)
     response
     .json()
-    .then((res) => createCard(res))
+    .then((res) => { createCard(res)
+        if (res.total <= perPageCount + (offset * perPageCount)){
+            btnseeMoreEl.style.display = 'none'
+        } else {
+            btnseeMoreEl.style.display = 'block'
+        }
+    })
     .catch((err) => console.log(err))
     .finally(() => {
         loadingEl.style.display = 'none'
@@ -18,8 +27,9 @@ async function fetchData(endpoint) {
 }
 
 window.addEventListener("load", () => {
+    collectionEl.style.display = 'none'
     createLoading(8)
-    fetchData("/products?limit=8")    
+    fetchData(`${productEndpoint}?limit=${perPageCount}`)    
     fetchCategory("/products/category-list")
 })
 
@@ -61,21 +71,38 @@ async function fetchCategory(endpoint) {
     response 
         .json()
         .then(res => {
-            createCategory(res);
-     })
+            createCategory(res)
+        })
+        .catch()
+        .finally(() => {
+            collectionEl.style.display = 'flex'
+        })
 }
 
 function createCategory (data) {
-    data.forEach((category) => {
+    ["all", ...data].forEach((category) => {
         const listEl = document.createElement("li")
         listEl.className = "item"
+        listEl.dataset.category = category === "all" ? "/products" : `/products/category/${category}`
         listEl.textContent = category
         collectionEl.appendChild(listEl)
+        listEl.addEventListener("click", (e) => {
+            let endpoint = e.target.dataset.category
+            productEndpoint = endpoint
+
+            offset = 0
+            productWrapperEl.innerHTML = null
+            fetchData(`${endpoint}?limit=${perPageCount}`)    
+            document.querySelectorAll(".collection .item").forEach((i) => {
+                i.classList.remove("active__category")
+            })
+            e.target.classList.add("active__category")
+        })
     })
 }
 
 let offset = 0
 btnseeMoreEl.addEventListener("click", () => {
     offset++
-    fetchData(`/products?limit=8&skip=${(offset) * 8}`)
+    fetchData(`${productEndpoint}?limit=8&skip=${(offset) * 8}`)
 })
