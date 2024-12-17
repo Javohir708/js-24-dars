@@ -82,7 +82,7 @@ async function fetchCategory(endpoint) {
 function createCategory (data) {
     ["all", ...data].forEach((category) => {
         const listEl = document.createElement("li")
-        listEl.className = "item"
+        listEl.className = category === "all" ? "item active__category" : "item"
         listEl.dataset.category = category === "all" ? "/products" : `/products/category/${category}`
         listEl.textContent = category
         collectionEl.appendChild(listEl)
