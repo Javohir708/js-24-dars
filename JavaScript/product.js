@@ -106,3 +106,4 @@ btnseeMoreEl.addEventListener("click", () => {
     offset++
     fetchData(`${productEndpoint}?limit=8&skip=${(offset) * 8}`)
 })
+
