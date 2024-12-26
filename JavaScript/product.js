@@ -8,12 +8,14 @@ const BASE_URL = "https://dummyjson.com"
 
 const perPageCount = 8
 let productEndpoint = "/products"
+let data = []
 
 async function fetchData(endpoint) {
     const response = await fetch(`${BASE_URL}${endpoint}`)
     response
     .json()
     .then((res) => { createCard(res)
+        data = [...data, ...res.products]
         if (res.total <= perPageCount + (offset * perPageCount)){
             btnseeMoreEl.style.display = 'none'
         } else {
@@ -48,20 +50,22 @@ function createLoading (n) {
 }
 
 function createCard (data) {  
-    console.log(data);
+    // console.log(data);
       
     let fragment = document.createDocumentFragment()
     data.products.forEach(product => {
         const divEl = document.createElement("div")
         divEl.className = "product__card"
+        divEl.dataset.id = product.id
         divEl.innerHTML = `
-            <div class="wishlist"><h3>Add</h3></div>
             <div class="product__image">
                 <img src="${product.thumbnail}" alt="product image">
             </div>
             <h2 title="${product.title}">${product.title}</h2>
             <p>${product.price}</p>
             <button class="product__btn">Buy now</button>
+            <button name="like-btn" class="wishlist">Add</button>
+
         `
         fragment.appendChild(divEl)
     });
@@ -110,3 +114,16 @@ btnseeMoreEl.addEventListener("click", () => {
     fetchData(`${productEndpoint}?limit=8&skip=${(offset) * 8}`)
 })
 
+productWrapperEl.addEventListener("click", e => {
+    let element = e.target
+    let id = element.closest(".product__card").dataset.id
+    if (element.name === "like-btn") {
+        const wish = data.find(item => item.id === +id)
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || []
+        let index = wishlist.findIndex(item => item.id === +id)
+        if (index < 0) {
+            localStorage.setItem("wishlist", JSON.stringify([...wishlist, wish]))
+        }
+        
+    }
+});
