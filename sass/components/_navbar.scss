@@ -4,6 +4,7 @@
     width: 100%;
     background-color: #ffffff94;
     backdrop-filter: blur(10px);
+    z-index: 1000;
     .navbar {
         display: flex;
         align-items: center;
@@ -20,6 +21,14 @@
             display: flex;
             gap: 30px;
             font-weight: 500;
+            .navbar__link {
+                span {
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
         }
     }
 }

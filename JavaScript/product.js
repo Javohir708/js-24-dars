@@ -50,20 +50,22 @@ function createLoading (n) {
 function createCard (data) {  
     console.log(data);
       
-
+    let fragment = document.createDocumentFragment()
     data.products.forEach(product => {
         const divEl = document.createElement("div")
         divEl.className = "product__card"
         divEl.innerHTML = `
+            <div class="wishlist"><h3>Add</h3></div>
             <div class="product__image">
                 <img src="${product.thumbnail}" alt="product image">
             </div>
-            <h2>${product.title}</h2>
+            <h2 title="${product.title}">${product.title}</h2>
             <p>${product.price}</p>
             <button class="product__btn">Buy now</button>
         `
-        productWrapperEl.appendChild(divEl)
+        fragment.appendChild(divEl)
     });
+    productWrapperEl.appendChild(fragment)
 }
 
 async function fetchCategory(endpoint) {
@@ -104,6 +106,7 @@ function createCategory (data) {
 let offset = 0
 btnseeMoreEl.addEventListener("click", () => {
     offset++
+    window.scrollTo(0, document.documentElement.scrollHeight)   
     fetchData(`${productEndpoint}?limit=8&skip=${(offset) * 8}`)
 })
 

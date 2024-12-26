@@ -3,6 +3,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     .product__card {
+        position: relative;
         width: 300px;
         height: auto;
         background-color: #fff;
@@ -18,6 +19,10 @@
             font-size: 20px;
             font-weight: 500;
             cursor: default;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
         }
         p {
             font-weight: 500;
